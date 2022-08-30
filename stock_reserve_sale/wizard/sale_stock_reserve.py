@@ -108,5 +108,5 @@ class SaleStockReserve(models.TransientModel):
         if active_model == "sale.order.line":
             line_ids = active_ids
 
-        self.stock_reserve(line_ids)
+        self.with_context(no_send_icp=True).stock_reserve(line_ids)
         return close
